@@ -11,7 +11,7 @@ const asyncWindow = new Promise(function (resolve, reject) {
   });
 });
 
-const asyncOAuth2 = import("./OAuth2.js");
+const asyncOAuth2 = import("https://scotwatson.github.io/OAuth2/20240302/OAuth2.js");
 
 (async function () {
   try {
@@ -61,8 +61,8 @@ function createRequestPOST(endpoint, body, headers) {
 }
 
 const selfURL = new self.URL(window.location);
-const selfURLParams = urlThis.searchParams;
-const selfURLFragment = urlThis.hash.substring(1);
+const selfURLParams = selfURL.searchParams;
+const selfURLFragment = selfURL.hash.substring(1);
 
 function start([ evtWindow, OAuth2 ]) {
   try {
