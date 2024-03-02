@@ -60,9 +60,9 @@ function createRequestPOST(endpoint, body, headers) {
   });
 }
 
-const urlThis = new self.URL(window.location);
-const paramsThis = urlThis.searchParams;
-const strThisFragment = urlThis.hash.substring(1);
+const selfURL = new self.URL(window.location);
+const selfURLParams = urlThis.searchParams;
+const selfURLFragment = urlThis.hash.substring(1);
 
 function start([ evtWindow, OAuth2 ]) {
   try {
@@ -189,7 +189,7 @@ function start([ evtWindow, OAuth2 ]) {
       document.body.appendChild(div);
     }
     const btnCreate = document.createElement("button");
-    btnCreate.innerHTML = "Revoke Tokens";
+    btnCreate.innerHTML = "Create";
     btnCreate.addEventListener("click", function (evt) {
       const args = {
         clientId: inpClientId.value,
