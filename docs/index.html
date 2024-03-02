@@ -17,7 +17,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     window.sessionStorage.setItem("version", requestedVersion);
     const newSearchParams = new URLSearchParams(selfURL.searchParams.toString());
     newSearchParams.delete("version");
-    const newURL = new URL(selfURL.protocol + "://" + selfURL.host + selfURL.pathname + "?" + newSearchParams.toString() + selfURL.hash);
+    const newURL = new URL(selfURL.protocol + "//" + selfURL.host + selfURL.pathname + "?" + newSearchParams.toString() + selfURL.hash);
     window.history.replaceState(null, "", newURL.toString());
   } else if (storedVersion !== null) {
     window.sessionStorage.setItem("version", storedVersion);
