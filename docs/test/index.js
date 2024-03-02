@@ -67,22 +67,21 @@ const strThisFragment = urlThis.hash.substring(1);
 function start([ evtWindow, OAuth2 ]) {
   try {
     const pClientId = document.createElement("p");
-    pClientId.append(Client ID: );
+    pClientId.append("Client ID: ");
     const inpClientId = document.createElement("input");
     inpClientId.type = "text";
     pClientId.appendChild(inpClientId);
     document.body.appendChild(pClientId);
     const pTokenEndpoint = document.createElement("p");
-    pTokenEndpoint.append(Token Endpoint: );
+    pTokenEndpoint.append("Token Endpoint: ");
     const inpTokenEndpoint = document.createElement("input");
     inpTokenEndpoint.type = "text";
     pTokenEndpoint.appendChild(inpTokenEndpoint);
     document.body.appendChild(pTokenEndpoint);
 
-    let myTokenManagement = null;
     function createTokenManagement(args) {
       const div = document.createElement("div");
-      myTokenManagement = new OAuth2.TokenManagement(args);
+      const myTokenManagement = new OAuth2.TokenManagement(args);
       const pClientId = document.createElement("p");
       pClientId.append("Client ID: " + args.clientId)
       div.appendChild(pClientId);
