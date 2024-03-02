@@ -6,9 +6,34 @@
 (c) 2024 Scot Watson  All Rights Reserved
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OAuth2</title>
-    <script src="./20240302/index.js"></script>
+    <script>
+(function () {
+  const latestVersion = "20240302";
+  const storedVersion = window.sessionStorage.getItem("version");
+  const selfURL = new URL(window.location);
+  const requestedVersion = selfURL.searchParams.get("version");
+  if (requestedVersion !== null) {
+    window.sessionStorage.setItem("version", requestedVersion);
+    const newSearchParams = new URLSearchParams(selfURL.searchParams.toString());
+    newSearchParams.delete("version");
+    const newURL = new URL(selfURL.protocol + "://" + selfURL.host + selfURL.pathname + "?" + newSearchParams.toString() + selfURL.hash);
+    window.history.replaceState(null, "", newURL.toString());
+  } else if (storedVersion !== null) {
+    window.sessionStorage.setItem("version", storedVersion);
+  } else {
+    window.sessionStorage.setItem("version", latestVersion);
+  }
+  const version = window.sessionStorage.getItem("version");
+  const scriptElem = document.createElement("script");
+  scriptElem.src = "./" + version + "/index.js";
+  document.head.appendChild(scriptElem);
+})();
+function _version() {
+  window.sessionStorage.getItem("version");
+}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
   </head>
   <body style="margin:0;background-color:grey">
