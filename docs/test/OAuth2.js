@@ -58,7 +58,7 @@ const redirectEndpoint = new self.URL(selfURL.origin + selfURL.pathname);
 function coerseToString(args) {
   if (typeof args === "object" && args !== null) {
     return args.toString();
-  } else if (typeof args !== "string") {
+  } else if (typeof args === "string") {
     return args;
   } else {
     throw "Failed to coerse to string";
