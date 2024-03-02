@@ -189,7 +189,7 @@ function start([ evtWindow, OAuth2 ]) {
       document.body.appendChild(div);
     }
     const btnCreate = document.createElement("button");
-    btnCreate.innerHTML = "Revoke Tokens";
+    btnCreate.innerHTML = "Create";
     btnCreate.addEventListener("click", function (evt) {
       const args = {
         clientId: inpClientId.value,
