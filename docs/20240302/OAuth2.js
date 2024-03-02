@@ -82,13 +82,7 @@ export class TokenManagement {
   constructor(args) {
     const { clientId, tokenEndpoint, accessToken, refreshToken, tokenType, expiryDate } = args;
     this.#clientId = clientId;
-    if (typeof tokenEndpoint === "object" && tokenEndpoint !== null) {
-      this.#tokenEndpoint = tokenEndpoint.toString();
-    } else if (typeof tokenEndpoint === "string") {
-      this.#tokenEndpoint = tokenEndpoint;
-    } else {
-      throw "tokenEndpoint must be a string";
-    }
+    this.#tokenEndpoint = coerseToString(tokenEndpoint);
     this.setTokens(args);
   }
   setTokens(args) {
