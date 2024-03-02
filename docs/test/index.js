@@ -11,7 +11,7 @@ const asyncWindow = new Promise(function (resolve, reject) {
   });
 });
 
-const asyncOAuth2 = import("https://scotwatson.github.io/OAuth2/20240302/OAuth2.js");
+const asyncOAuth2 = import("./OAuth2.js");
 
 (async function () {
   try {
